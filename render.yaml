@@ -1,0 +1,38 @@
+services:
+  - type: worker
+    name: desert-crown-bot
+    runtime: docker
+    region: frankfurt
+    plan: free
+    dockerfilePath: ./Dockerfile
+    disk:
+      name: bot-data
+      mountPath: /app/data
+      sizeGB: 1
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: MANAGER_ID
+        sync: false
+      - key: MANAGER_NAME
+        sync: false
+      - key: MANAGER_PHONE
+        sync: false
+      - key: MANAGER_USERNAME
+        sync: false
+      - key: COMPANY_NAME
+        sync: false
+      - key: COMPANY_ADDRESS
+        sync: false
+      - key: COMPANY_PHONE
+        sync: false
+      - key: COMPANY_WEBSITE
+        value: ""
+      - key: DATABASE_URL
+        value: sqlite+aiosqlite:////app/data/bot.db
+      - key: DEBUG
+        value: "false"
+      - key: LOG_LEVEL
+        value: "INFO"
